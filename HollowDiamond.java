@@ -1,8 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 
-
-public class Practice {
-
+public class HollowDiamond {
     public static void hollowDiamond(int n){
         int spaces = 1;
         for(int i=1; i<=(2*n)-1; i++){
