@@ -1,45 +1,33 @@
-import java.util.*;
+// import java.util.*;
 
 
 public class Practice {
 
-    public static void hollowDiamond(int n){
-        int spaces = 1;
-        for(int i=1; i<=(2*n)-1; i++){
-            if(i<=n){
-                for(int j=1; j<=(n-i); j++){
-                    System.out.print(" ");
-                }
-            }else{
-                for(int j=1; j<=(i-n); j++){
-                    System.out.print(" ");
-                }
+    public static void arrays(int numbers[]){
+       int ans[] = new int[5];
+       for(int i=0; i<numbers.length; i++){
+        int product = 1;
+        for(int j=0; j<numbers.length; j++){
+            if(i == j){
+                continue;
             }
-
-            if(i == 1 || i == (2*n)-1){
-                System.out.print("*");
-            }else{
-                System.out.print("*");
-                for(int j=1; j<=spaces; j++){
-                    System.out.print(" ");
-                }
-                System.out.print("*");
-                if(i<n){
-                    spaces += 2;
-                }else{
-                    spaces -= 2;
-                }
-            }
-            System.out.println();
+            product *= numbers[j];
         }
+        ans[i] = product;
+       }
+
+       for(int i=0; i<ans.length; i++){
+        System.out.print(ans[i] + " ");
+       }
+
     }
 
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        // int arr[] = {2, 4, 6, 8, 10, 12, 14, 16};
+        int numbers[] = {-1, 1, 0, -3, 3};
 
-        hollowDiamond(n);
+       arrays(numbers);
 
-        sc.close();
     }
 }
