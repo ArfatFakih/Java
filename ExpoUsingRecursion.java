@@ -6,13 +6,13 @@ public class ExpoUsingRecursion {
         }
 
         int halfPower = exponentail(x, n/2);
-        int ans = halfPower * halfPower;
+        int answer = halfPower * halfPower;
 
         if(n % 2 != 0){
-            ans = x * ans;
+            answer = x * answer;
         }
 
-        return ans;
+        return answer;
 
     }
     public static void main(String[] args) {
