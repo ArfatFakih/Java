@@ -1,20 +1,28 @@
-// import java.util.*;
+import java.util.*;
 
 
 public class Practice {
 
-    public static void decThenInc(int n){
-        if(n == 1){
-            System.out.println(n);
-            return;
-        }
-        System.out.println(n);
-        decThenInc(n-1);
-        System.out.println(n);
+    public static void swap(ArrayList<Integer> list, int idx1, int idx2){
+        int temp = list.get(idx1);
+        list.set(idx1, list.get(idx2));
+        list.set(idx2, temp);
     }
 
 
     public static void main(String[] args) {
-        decThenInc(5);
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(5);
+        list.add(9);
+        list.add(3);
+        list.add(6);
+
+        System.out.println(list);
+
+        swap(list, 1, 3);
+
+        System.out.print(list);
+        
     }
 }
