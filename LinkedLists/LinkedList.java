@@ -283,7 +283,7 @@ public class LinkedList {
         return slow; //mid node
     }
 
-    public Node mergeSort(Node head){
+    public Node mergeSort(Node head){ //O(nlogn)
         if(head == null || head.next == null){
             return head;
         }
@@ -299,6 +299,47 @@ public class LinkedList {
 
         //merge
         return merge(newLeft, newRight);
+    }
+
+    public void zigZag() {
+        //step1 - Find Mid 
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        Node mid = slow;
+
+        //step2 - Reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        //step3 - merge - zig-zag merge
+        Node left = head;
+        Node right = prev;
+        Node nextLeft, nextRight;
+
+        while(left != null && right != null){
+            nextLeft = left.next;
+            left.next = right;
+            nextRight = right.next;
+            right.next = nextLeft;
+
+            left = nextLeft;
+            right = nextRight;
+        }
+
     }
 
     public void print(){ //O(n)
@@ -366,17 +407,30 @@ public class LinkedList {
 
 
         //Data for merge sort on Linked List
-        LinkedList ll = new LinkedList();
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(6);
-        ll.addFirst(8);
-        ll.addFirst(5);
+        // LinkedList ll = new LinkedList();
+        // ll.addFirst(1);
+        // ll.addFirst(2);
+        // ll.addFirst(6);
+        // ll.addFirst(8);
+        // ll.addFirst(5);
         
-        ll.print();
+        // ll.print();
 
-        ll.head = ll.mergeSort(ll.head);
-        ll.print();
+        // ll.head = ll.mergeSort(ll.head);
+        // ll.print();
 
+        //Data for zig-zag Linked List
+        LinkedList ll = new LinkedList();
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(6);
+        //1->2->3->4->5->6
+
+        ll.print();
+        ll.zigZag();
+        ll.print();
     }
 }
