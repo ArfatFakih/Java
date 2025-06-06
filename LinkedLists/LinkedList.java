@@ -195,6 +195,21 @@ public class LinkedList {
         return true;
     }
 
+    public static boolean isCycle(){ //Floyd's Cycle Finding algorithm
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+            if(slow == fast){
+                return true; //cycle or loop exists
+            }
+        }
+
+        return false; //cycle or loop doesn't exists
+    }
+
     public void print(){ //O(n)
         Node temp = head;
         if(head == null){
@@ -209,7 +224,7 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
+        // LinkedList ll = new LinkedList();
 
         // ll.addFirst(2);
         // ll.addFirst(1);
@@ -229,13 +244,21 @@ public class LinkedList {
 
         //data to check palindrome 
 
-        ll.addFirst(1);
-        ll.addLast(2);
-        ll.addLast(2);
-        ll.addLast(1);
+        // ll.addFirst(1);
+        // ll.addLast(2);
+        // ll.addLast(2);
+        // ll.addLast(1);
 
-        ll.print();
-        System.out.println(ll.checkPalindrome());
+        // ll.print();
+        // System.out.println(ll.checkPalindrome());
+
+        //Data to check is cycle or loop is there or not in Linked List
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = head;
+        // 1->2->3->1
+        System.out.println(isCycle());
 
     }
 }
