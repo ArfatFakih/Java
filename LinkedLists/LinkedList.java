@@ -342,6 +342,48 @@ public class LinkedList {
 
     }
 
+    //Delete N Nodes After M Nodes of a Linked List
+    Node ogHead;
+    Node ogTail;
+
+    public void addLastmNodes(Node curr){
+        ogTail.next = curr;
+        ogTail = curr;
+    }
+
+    public Node addNodes(Node curr, int m){
+        while(curr != null && m>0){
+            Node currKaNext = curr.next;
+            curr.next = null;
+
+            addLastmNodes(curr);
+            curr = currKaNext;
+            m--;
+        }
+        return curr;
+    }
+
+    public Node deletnNodesAftermNodes(Node head, int m, int n){
+        Node dummy = new Node(-1);
+        ogHead = dummy;
+        ogTail = dummy;
+        
+        Node curr = head;
+        int N = n;
+
+        while(curr != null){
+            curr = addNodes(curr, m);
+
+            //delete n nodes
+            while(curr != null && N>0){
+                curr = curr.next;
+                N--;
+            }
+            N=n;
+        }
+        return dummy.next;
+    }
+
     public void print(){ //O(n)
         Node temp = head;
         if(head == null){
