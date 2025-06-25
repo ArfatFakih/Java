@@ -3,7 +3,7 @@ package GreedyAlgorithms;
 import java.util.*;
 
 public class ActivitySelection {
-    public static void main(String[] args) {
+    public static void main(String[] args) {//O(nlogn)
         int start[] = {1, 3, 0, 5, 8, 5};
         int end[] = {2, 4, 6, 7, 9, 9};
 
@@ -16,7 +16,7 @@ public class ActivitySelection {
         }
 
         //lambda function -> shortform
-        Arrays.sort(activities,Comparator.comparingDouble(o -> o[2]));
+        Arrays.sort(activities,Comparator.comparingDouble(o -> o[2])); //O(logn)
 
         int maxAct = 0;
         ArrayList<Integer> ans = new ArrayList<>();
@@ -26,7 +26,7 @@ public class ActivitySelection {
         ans.add(activities[0][0]);
         int lastEnd = activities[0][2];
 
-        for(int i=1; i<end.length; i++){
+        for(int i=1; i<end.length; i++){ //O(n)
             if(activities[i][1] >= lastEnd){
                 maxAct++;
                 ans.add(activities[i][0]);
