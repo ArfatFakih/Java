@@ -42,13 +42,35 @@ public class PreOrder {
             preOrderTraversal(root.left);
             preOrderTraversal(root.right);
         }
+
+        //Inorder Traversal steps:- 
+        //1) left Subtree
+        //2) Root
+        //3) right Subtree
+
+        public static void inorderTraversal(Node root){
+            if(root == null) {
+                return;
+            }
+            inorderTraversal(root.left);
+            System.out.print(root.data + " ");
+            inorderTraversal(root.right);
+        }
     }
 
     public static void main(String[] args) {
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
+
+        //Preorder data
+
+        // Node root = tree.buildTree(nodes);
+        // System.out.println(root.data);
+        // tree.preOrderTraversal(root);
+
+        //Inorder data
+
         Node root = tree.buildTree(nodes);
-        System.out.println(root.data);
-        tree.preOrderTraversal(root);
+        tree.inorderTraversal(root);
     }
 }
