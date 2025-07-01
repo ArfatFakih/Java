@@ -56,11 +56,26 @@ public class PreOrder {
             System.out.print(root.data + " ");
             inorderTraversal(root.right);
         }
+
+
+        //Postorder Traversal steps:- 
+        //1) left Subtree
+        //2) right Subtree
+        //3) Root
+
+        public static void postorderTraversal(Node root){
+            if(root == null) {
+                return;
+            }
+            postorderTraversal(root.left);
+            postorderTraversal(root.right);
+            System.out.print(root.data + " ");
+        }
     }
 
     public static void main(String[] args) {
-        int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
-        BinaryTree tree = new BinaryTree();
+        // int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+        // BinaryTree tree = new BinaryTree();
 
         //Preorder data
 
@@ -68,9 +83,16 @@ public class PreOrder {
         // System.out.println(root.data);
         // tree.preOrderTraversal(root);
 
+
         //Inorder data
 
-        Node root = tree.buildTree(nodes);
-        tree.inorderTraversal(root);
-    }
+        // Node root = tree.buildTree(nodes);
+        // tree.inorderTraversal(root);
+
+
+        //Postorder data
+
+        // Node root = tree.buildTree(nodes);
+        // tree.postorderTraversal(root);
+    }  
 }
