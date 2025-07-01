@@ -1,5 +1,7 @@
 package BinaryTrees;
 
+import java.util.*;
+
 public class PreOrder {
 
     static class Node {
@@ -71,6 +73,38 @@ public class PreOrder {
             postorderTraversal(root.right);
             System.out.print(root.data + " ");
         }
+
+        //Level order traversal - uses Breadth First Search(BFS)
+
+        public static void levelorderTraversal(Node root){
+            if(root == null){
+                return;
+            }
+            
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null);
+
+            while(!q.isEmpty()){
+                Node currNode = q.remove();
+                if(currNode == null){
+                    System.out.println();
+                    if(q.isEmpty()){
+                        break;
+                    }else{
+                        q.add(null);
+                    }
+                }else {
+                    System.out.print(currNode.data + " ");
+                    if(currNode.left != null){
+                        q.add(currNode.left);
+                    }
+                    if(currNode.right != null){
+                        q.add(currNode.right);
+                    }
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -94,5 +128,12 @@ public class PreOrder {
 
         // Node root = tree.buildTree(nodes);
         // tree.postorderTraversal(root);
+
+
+        //Level order data
+        
+        // Node root = tree.buildTree(nodes);
+        // tree.levelorderTraversal(root);
+
     }  
 }
