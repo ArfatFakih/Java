@@ -69,5 +69,6 @@ public class TransformToSumTree {
 
         transform(root);
         preorder(root);
+        
     }
 }
