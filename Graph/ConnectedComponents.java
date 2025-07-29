@@ -42,6 +42,10 @@ public class ConnectedComponents {
         graph[5].add(new Edge(5, 6, 1));
 
         graph[6].add(new Edge(6, 5, 1));
+
+        graph[7].add(new Edge(7, 8, 1));
+
+        graph[8].add(new Edge(8, 7, 1));
     }
 
     //Same can be done using DFS
@@ -50,23 +54,23 @@ public class ConnectedComponents {
         boolean vis[] = new boolean[graph.length];
         for(int i=0; i<graph.length; i++){
             if(!vis[i]){
-                bfsUtil(graph, vis);
+                bfsUtil(graph, vis, i);
             }
         }
     }
 
-    public static void bfsUtil(ArrayList<Edge>[] graph, boolean vis[]){ //O(V+E)
+    public static void bfsUtil(ArrayList<Edge>[] graph, boolean vis[], int curr){ //O(V+E)
         Queue<Integer> q = new LinkedList<>();
 
-        q.add(0); // source = 0
+        q.add(curr); // source = 0
         while(!q.isEmpty()){
-            int curr = q.remove();
+            int node = q.remove();
 
-            if(!vis[curr]){
-                System.out.print(curr + " ");
-                vis[curr] = true;
-                for(int i=0; i<graph[curr].size(); i++){
-                    Edge e = graph[curr].get(i);
+            if(!vis[node]){
+                System.out.print(node + " ");
+                vis[node] = true;
+                for(int i=0; i<graph[node].size(); i++){
+                    Edge e = graph[node].get(i);
                     q.add(e.dest);
                 }
             }
@@ -83,7 +87,7 @@ public class ConnectedComponents {
                 2 --- 4
         */
 
-        int V = 7;
+        int V = 9;
 
         @SuppressWarnings("unchecked")  // To avoid warning 
 
